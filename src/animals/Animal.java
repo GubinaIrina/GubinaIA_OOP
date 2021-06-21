@@ -3,12 +3,10 @@ package animals;
 import food.Food;
 
 
-public class Animal {
+public abstract class Animal {
     private int levelOfFullness;
 
-    public void eat(Food food) {
-
-    }
+    public abstract void eat(Food food);
 
     public int getLevelOfFullness() {
         return levelOfFullness;

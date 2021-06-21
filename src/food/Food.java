@@ -1,6 +1,6 @@
 package food;
 
-public class Food {
+public abstract class Food {
     private int satiety;
 
     public int getSatiety() {

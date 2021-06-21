@@ -1,8 +1,5 @@
-import animals.Animal;
-import animals.Voice;
-import food.Food;
-import food.Grass;
-import food.Meat;
+import animals.*;
+import food.*;
 
 public class Worker {
     public void feed(Animal animal, Food food) {

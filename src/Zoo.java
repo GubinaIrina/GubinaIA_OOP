@@ -1,7 +1,5 @@
 import animals.*;
-import food.Food;
-import food.Grass;
-import food.Meat;
+import food.*;
 
 public class Zoo {
     public static void main(String[] args) {
@@ -14,12 +12,18 @@ public class Zoo {
         Animal tiger = new Tiger();
         Animal rabbit = new Rabbit();
 
-        Food grass = new Grass();
-        Food meat = new Meat();
+        Food carrot = new Vegetables();
+        Food meat = new RawMeat();
+        Food fishFood = new FishFood();
+        Food plants = new Plants();
 
-        worker.feed(rabbit, grass);
+        worker.feed(rabbit, carrot);
         worker.feed(lion, meat);
-        worker.feed(tiger, grass);
+        worker.feed(tiger, carrot);
+        worker.feed(fish, fishFood);
+        worker.feed(duck, fishFood);
+        worker.feed(duck, plants);
+        worker.feed(crocodile, meat);
 
         Voice tigerVoice = new Tiger();
         Voice lionVoice = new Lion();

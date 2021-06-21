@@ -1,8 +1,5 @@
 package food;
 
-public class Meat extends Food {
-    @Override
-    public void setSatiety(int satiety) {
-        super.setSatiety(6);
-    }
+public abstract class Meat extends Food {
+
 }

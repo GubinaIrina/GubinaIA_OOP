@@ -1,8 +1,23 @@
 package animals;
 
+import food.*;
+
 public class Duck extends Herbivore implements Swim, Fly, Voice {
     private String voice = "Кря";
 
+    @Override
+    public void eat(Food food) {
+        if (food instanceof Plants) {
+            setLevelOfFullness(getLevelOfFullness() + food.getSatiety());
+            System.out.println("Сотрудник кормит утку \n Утка кушает \n Уровень сытости: " + getLevelOfFullness());
+        } else if (food instanceof Vegetables) {
+            System.out.println("Сотрудник пытается накормить утку овощами \n Утка не ест овощи!");
+        } else if (food instanceof FishFood) {
+            System.out.println("Сотрудник пытается накормить утку рыбим кормом \n Утка не ест рыбий корм!");
+        } else {
+            System.out.println("Сотрудник пытается накормить утку мясом \n Утка не ест мясо!");
+        }
+    }
 
     @Override
     public void setLevelOfFullness(int levelOfFullness) {
