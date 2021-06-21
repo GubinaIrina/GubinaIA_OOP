@@ -3,7 +3,7 @@ package animals;
 import food.*;
 
 public class Duck extends Herbivore implements Swim, Fly, Voice {
-    private String voice = "Кря";
+    final String voice = "Кря";
 
     @Override
     public void eat(Food food) {
@@ -36,11 +36,6 @@ public class Duck extends Herbivore implements Swim, Fly, Voice {
 
     @Override
     public void voice() {
-        getVoice();
         System.out.println("Утка издает звук: " + voice);
-    }
-
-    public String getVoice() {
-        return voice;
     }
 }

@@ -3,7 +3,7 @@ package animals;
 import food.*;
 
 public class Lion extends Carnivorous implements Run, Voice {
-   private String voice = "Ррр";
+    final String voice = "Ррр";
 
     @Override
     public void eat(Food food) {
@@ -32,10 +32,6 @@ public class Lion extends Carnivorous implements Run, Voice {
 
     @Override
     public void voice() {
-        getVoice();
         System.out.println("Лев издает звук: " + voice);
-    }
-    public String getVoice() {
-        return voice;
     }
 }

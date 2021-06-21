@@ -27,6 +27,8 @@ public class Zoo {
 
         Voice tigerVoice = new Tiger();
         Voice lionVoice = new Lion();
+        Voice duckVoice = new Duck();
+        worker.getVoice(duckVoice);
         worker.getVoice(lionVoice);
         worker.getVoice(tigerVoice);
 
