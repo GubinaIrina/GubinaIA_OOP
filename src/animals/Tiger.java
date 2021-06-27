@@ -1,22 +1,31 @@
 package animals;
 
+import cage.CageSize;
 import food.*;
+
 
 public class Tiger extends Carnivorous implements Run, Voice {
     final String voice = "Ррр";
+    CageSize size;
+
+    public Tiger() {
+        setName("Шива");
+        setAnimal("тигр");
+        setSize(CageSize.BIG);
+    }
 
     @Override
-    public void eat(Food food) {
+    public void eat(Food food) throws WrongFoodException {
         if (food instanceof Meat) {
             setLevelOfFullness(getLevelOfFullness() + food.getSatiety());
             System.out.println("Сотрудник кормит тигра мясом \n Тигр кушает \n Уровень сытости: "
                     + getLevelOfFullness());
         } else if (food instanceof Vegetables) {
-            System.out.println("Сотрудник пытается накормить тигра овощами \n Тигр не ест овощи!");
+            throw new WrongFoodException("Сотрудник пытается накормить тигра овощами \n Тигр не ест овощи!");
         } else if (food instanceof Plants) {
-            System.out.println("Сотрудник пытается накормить тигра травой \n Тигр не ест траву!");
+            throw new WrongFoodException("Сотрудник пытается накормить тигра травой \n Тигр не ест траву!");
         } else if (food instanceof FishFood) {
-            System.out.println("Сотрудник пытается накормить тигра рыбим кормом \n Тигр не ест рыбий корм!");
+            throw new WrongFoodException("Сотрудник пытается накормить тигра рыбим кормом \n Тигр не ест рыбий корм!");
         }
     }
 
@@ -33,5 +42,15 @@ public class Tiger extends Carnivorous implements Run, Voice {
     @Override
     public void voice() {
         System.out.println("Тигр издает звук: " + voice);
+    }
+
+    @Override
+    public void setSize(CageSize size) {
+        this.size = size;
+    }
+
+    @Override
+    public CageSize getSize() {
+        return size;
     }
 }

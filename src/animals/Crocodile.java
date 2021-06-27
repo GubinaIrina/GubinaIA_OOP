@@ -1,21 +1,32 @@
 package animals;
 
+import cage.CageSize;
 import food.*;
 
+import java.util.Objects;
+
 public class Crocodile extends Carnivorous implements Swim, Run {
+    CageSize size;
+
+    public Crocodile() {
+        setName("Тор");
+        setAnimal("крокодил");
+        setSize(CageSize.MEDIUM);
+    }
 
     @Override
-    public void eat(Food food) {
+    public void eat(Food food) throws WrongFoodException {
         if (food instanceof Meat) {
             setLevelOfFullness(getLevelOfFullness() + food.getSatiety());
             System.out.println("Сотрудник кормит крокодила мясом \n Крокодил кушает \n Уровень сытости: "
                     + getLevelOfFullness());
         } else if (food instanceof Vegetables) {
-            System.out.println("Сотрудник пытается накормить крокодила овощами \n Крокодил не ест овощи!");
+            throw new WrongFoodException("Сотрудник пытается накормить крокодила овощами \n Крокодил не ест овощи!");
         } else if (food instanceof Plants) {
-            System.out.println("Сотрудник пытается накормить крокодила травой \n Крокодил не ест траву!");
+            throw new WrongFoodException("Сотрудник пытается накормить крокодила травой \n Крокодил не ест траву!");
         } else if (food instanceof FishFood) {
-            System.out.println("Сотрудник пытается накормить крокодила рыбим кормом \n Крокодил не ест рыбий корм!");
+            throw new WrongFoodException("Сотрудник пытается накормить крокодила рыбим кормом " +
+                    "\n Крокодил не ест рыбий корм!");
         }
     }
 
@@ -32,5 +43,15 @@ public class Crocodile extends Carnivorous implements Swim, Run {
     @Override
     public void swim() {
         System.out.println("Крокодил плавает в пруду");
+    }
+
+    @Override
+    public void setSize(CageSize size) {
+        this.size = size;
+    }
+
+    @Override
+    public CageSize getSize() {
+        return size;
     }
 }

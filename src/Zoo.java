@@ -1,8 +1,11 @@
 import animals.*;
+import cage.Cage;
+import cage.CageSize;
 import food.*;
 
+
 public class Zoo {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws WrongFoodException {
         Worker worker = new Worker();
 
         Animal duck = new Duck();
@@ -19,9 +22,7 @@ public class Zoo {
 
         worker.feed(rabbit, carrot);
         worker.feed(lion, meat);
-        worker.feed(tiger, carrot);
         worker.feed(fish, fishFood);
-        worker.feed(duck, fishFood);
         worker.feed(duck, plants);
         worker.feed(crocodile, meat);
 
@@ -43,5 +44,21 @@ public class Zoo {
         for (int i = 0; i < swims.length; i++) {
             swims[i].swim();
         }
+
+        Cage<Animal> smallCage = new Cage<>("Маленький", CageSize.SMALL);
+        Cage<Animal> mediumCage = new Cage<>("Средний", CageSize.MEDIUM);
+        Cage<Animal> bigCage = new Cage<>("Большой", CageSize.BIG);
+        mediumCage.addAnimal(duck);
+        mediumCage.addAnimal(crocodile);
+        bigCage.addAnimal(lion);
+        bigCage.addAnimal(rabbit);
+        smallCage.addAnimal(rabbit);
+        bigCage.addAnimal(tiger);
+
+        mediumCage.removeAnimal(crocodile);
+
+        bigCage.showAnimalsInCage();
+
+        worker.feed(tiger, carrot);
     }
 }

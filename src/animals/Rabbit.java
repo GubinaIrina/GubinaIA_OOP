@@ -1,14 +1,20 @@
 package animals;
 
-import food.FishFood;
-import food.Food;
-import food.Plants;
-import food.Vegetables;
+import cage.CageSize;
+import food.*;
+
 
 public class Rabbit extends Herbivore implements Run {
+    CageSize size;
+
+    public Rabbit() {
+        setName("Маршал");
+        setAnimal("кролик");
+        setSize(CageSize.SMALL);
+    }
 
     @Override
-    public void eat(Food food) {
+    public void eat(Food food) throws WrongFoodException {
         if (food instanceof Vegetables) {
             setLevelOfFullness(getLevelOfFullness() + food.getSatiety());
             System.out.println("Сотрудник кормит кролика овощами \n Кролик кушает \n Уровень сытости: "
@@ -18,9 +24,10 @@ public class Rabbit extends Herbivore implements Run {
             System.out.println("Сотрудник кормит кролика травой \n Кролик кушает \n Уровень сытости: "
                     + getLevelOfFullness());
         } else if (food instanceof FishFood) {
-            System.out.println("Сотрудник пытается накормить кролика рыбим кормом \n Кролик не ест рыбий корм!");
+            throw new WrongFoodException("Сотрудник пытается накормить кролика рыбим кормом " +
+                    "\n Кролик не ест рыбий корм!");
         } else {
-            System.out.println("Сотрудник пытается накормить кролика мясом \n Кролик не ест мясо!");
+            throw new WrongFoodException("Сотрудник пытается накормить кролика мясом \n Кролик не ест мясо!");
         }
     }
 
@@ -32,5 +39,15 @@ public class Rabbit extends Herbivore implements Run {
     @Override
     public void run() {
         System.out.println("Кролик бегает по лужайке");
+    }
+
+    @Override
+    public void setSize(CageSize size) {
+        this.size = size;
+    }
+
+    @Override
+    public CageSize getSize() {
+        return size;
     }
 }
